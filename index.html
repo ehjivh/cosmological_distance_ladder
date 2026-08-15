@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="ja">
   <head>
-    <!-- ===== 基本メタ ===== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>星までの距離はどうやって測る？ | 天体までの距離をWebで学べる教育アプリ</title>
@@ -13,7 +12,6 @@
     <meta name="theme-color" content="#101318" />
     <link rel="canonical" href="https://example.com/kyori.html" />
 
-    <!-- ===== OGP（Facebook / LINE など） ===== -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="星までの距離はどうやって測る？" />
     <meta property="og:title" content="星までの距離はどうやって測る？ | 天体までの距離をWebで学ぶ" />
@@ -25,17 +23,12 @@
     <meta property="og:image:alt" content="宇宙の距離梯子を学ぶインタラクティブアプリの画面" />
     <meta property="og:locale" content="ja_JP" />
 
-    <!-- ===== Twitter Card ===== -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="星までの距離はどうやって測る？ | 天体までの距離をWebで学ぶ" />
     <meta name="twitter:description" content="年周視差・セファイド・Ia型超新星・赤方偏移の4手法をスライダー操作で体験。宇宙の距離の測り方が学べる無料教育アプリ。" />
     <meta name="twitter:image" content="https://example.com/ogp-cosmic-ladder.png" />
     <meta name="twitter:image:alt" content="宇宙の距離梯子を学ぶインタラクティブアプリの画面" />
 
-    <!-- ===== ファビコン（任意・SVG推奨で軽量） ===== 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%AD%3C/text%3E%3C/svg%3E">-->
-
-    <!-- ===== 構造化データ（JSON-LD / LearningResource） ===== -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -48,22 +41,14 @@
         "learningResourceType": "interactive simulation",
         "educationalLevel": ["小学生", "中学生", "高校生", "一般"],
         "teaches": ["年周視差", "セファイド変光星の周期光度関係", "Ia型超新星による距離測定", "赤方偏移とハッブルの法則"],
-        "about": {
-          "@type": "Thing",
-          "name": "宇宙の距離梯子（Cosmic Distance Ladder）"
-        },
+        "about": { "@type": "Thing", "name": "宇宙の距離梯子（Cosmic Distance Ladder）" },
         "keywords": "宇宙の距離梯子, 年周視差, セファイド変光星, Ia型超新星, 赤方偏移, ハッブル定数, 天文教育",
-        "creator": {
-          "@type": "Organization",
-          "name": "Tatsuki"
-        }
+        "creator": { "@type": "Organization", "name": "Tatsuki" }
       }
     </script>
 
     <style>
-      /* ===== Material Design 3 トークン ===== */
       :root {
-        /* --- Color roles (dark scheme, tonal palette) --- */
         --md-primary: #a6c8ff;
         --md-on-primary: #00325b;
         --md-primary-container: #1b4b7d;
@@ -92,18 +77,15 @@
         --md-outline: #8d9199;
         --md-outline-variant: #42474e;
 
-        /* --- Shape --- */
         --md-radius-xs: 8px;
         --md-radius-sm: 12px;
         --md-radius-md: 16px;
         --md-radius-lg: 24px;
         --md-radius-full: 9999px;
 
-        /* --- Elevation (shadow tokens) --- */
         --md-elev-1: 0 1px 3px 1px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.3);
         --md-elev-2: 0 2px 6px 2px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.3);
 
-        /* --- Motion --- */
         --md-ease-standard: cubic-bezier(0.2, 0, 0, 1);
         --md-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
       }
@@ -119,8 +101,6 @@
         overflow-x: hidden;
         line-height: 1.5;
       }
-
-      /* ===== Top app bar ===== */
       .app-bar {
         background: var(--md-surface-container);
         padding: 20px 24px;
@@ -140,8 +120,6 @@
         letter-spacing: 0.25px;
         color: var(--md-on-surface-variant);
       }
-
-      /* ===== Navigation chips ===== */
       .chip-set {
         display: flex;
         justify-content: center;
@@ -176,7 +154,6 @@
         opacity: 0.85;
       }
       .chip::after {
-        /* state layer */
         content: "";
         position: absolute;
         inset: 0;
@@ -204,8 +181,6 @@
         cursor: not-allowed;
         pointer-events: none;
       }
-
-      /* ===== Layout ===== */
       .step {
         display: none;
         max-width: 980px;
@@ -226,8 +201,6 @@
           transform: none;
         }
       }
-
-      /* ===== Card (Elevated / Filled) ===== */
       .card {
         background: var(--md-surface-container-low);
         border-radius: var(--md-radius-lg);
@@ -261,16 +234,12 @@
         color: var(--md-on-surface-variant);
         margin: 12px 0;
       }
-
-      /* ===== Canvas ===== */
       canvas {
         width: 100%;
         background: var(--md-surface-container-lowest);
         border-radius: var(--md-radius-md);
         display: block;
       }
-
-      /* ===== Sliders (M3) ===== */
       .controls {
         margin-top: 16px;
       }
@@ -325,8 +294,6 @@
           0 0 0 10px rgba(166, 200, 255, 0.16),
           var(--md-elev-1);
       }
-
-      /* ===== Readout (Filled tonal chips) ===== */
       .readout {
         display: flex;
         flex-wrap: wrap;
@@ -353,8 +320,6 @@
         letter-spacing: 0;
         color: var(--md-primary);
       }
-
-      /* ===== Buttons (M3) ===== */
       .btn {
         position: relative;
         overflow: hidden;
@@ -397,7 +362,6 @@
         display: none;
       }
       .btn.ghost {
-        /* Outlined button */
         background: transparent;
         color: var(--md-primary);
         border: 1px solid var(--md-outline);
@@ -406,8 +370,6 @@
       .btn.ghost::after {
         background: var(--md-primary);
       }
-
-      /* ===== Status (Snackbar-like) ===== */
       .status {
         margin-top: 16px;
         font-size: 14px;
@@ -429,8 +391,6 @@
         color: var(--md-on-surface-variant);
         margin-top: 8px;
       }
-
-      /* ===== Formula (Monospace surface) ===== */
       .formula {
         background: var(--md-surface-container-highest);
         border-radius: var(--md-radius-xs);
@@ -441,8 +401,6 @@
         margin: 12px 0;
         overflow-x: auto;
       }
-
-      /* ===== References ===== */
       .ref {
         font-size: 12px;
         letter-spacing: 0.4px;
@@ -466,8 +424,6 @@
         border-radius: 4px;
         padding: 0 4px;
       }
-
-      /* ===== Locked message ===== */
       .locked-msg {
         text-align: center;
         padding: 48px 24px;
@@ -475,8 +431,6 @@
         font-size: 14px;
         letter-spacing: 0.25px;
       }
-
-      /* ===== Kids info box (Filled tertiary card) ===== */
       .kids {
         background: var(--md-surface-container);
         border-left: 4px solid var(--md-tertiary);
@@ -504,8 +458,6 @@
         font-size: 13px;
         letter-spacing: 0.25px;
       }
-
-      /* ===== Details / expand ===== */
       details {
         margin-top: 16px;
       }
@@ -539,6 +491,70 @@
         line-height: 1.9;
         margin-top: 12px;
       }
+
+      /* ===== 追加：ビュー切り替えトグル（全STEP共通） ===== */
+      .view-toggle {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 8px 0 12px;
+        flex-wrap: wrap;
+      }
+      .view-toggle label.sw {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--md-on-surface);
+        user-select: none;
+      }
+      .view-toggle input[type="checkbox"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 44px;
+        height: 24px;
+        background: var(--md-surface-container-highest);
+        border: 2px solid var(--md-outline);
+        border-radius: var(--md-radius-full);
+        position: relative;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+        margin: 0;
+        flex: 0 0 auto;
+      }
+      .view-toggle input[type="checkbox"]::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 3px;
+        width: 14px;
+        height: 14px;
+        background: var(--md-outline);
+        border-radius: 50%;
+        transform: translateY(-50%);
+        transition:
+          left 0.2s var(--md-ease-standard),
+          background 0.2s,
+          width 0.2s,
+          height 0.2s;
+      }
+      .view-toggle input[type="checkbox"]:checked {
+        background: var(--md-primary);
+        border-color: var(--md-primary);
+      }
+      .view-toggle input[type="checkbox"]:checked::before {
+        left: 22px;
+        width: 18px;
+        height: 18px;
+        background: var(--md-on-primary);
+      }
+      .view-toggle .note {
+        margin: 0;
+      }
     </style>
   </head>
   <body>
@@ -562,13 +578,19 @@
           <div class="mame">豆知識：1838年、ドイツの<a href="https://astro-dic.jp/bessel-friedrich-wilhelm/" target="_blank">ベッセル</a>が「はくちょう座61番星」で初めてこの測定に成功しました。 彼の視差の値は<b>約0.314秒角</b>。現代の正確な値は<b>約0.286秒角</b>で、当時としては驚くほど正確でした。 人類が初めて星までの距離を"数字"で知った、歴史的なできごとです。</div>
         </div>
 
+        <!-- ▼ 追加：ビュー切り替えトグル（STEP1） -->
+        <div class="view-toggle">
+          <label class="sw"><input type="checkbox" id="toggle-s1" />日常のたとえで見る（車窓からの風景）</label>
+          <span class="hint note">OFF：宇宙ビュー ／ ON：走る車から見た「近くの標識」と「遠くの山」</span>
+        </div>
+
         <div style="display: flex; gap: 12px; flex-wrap: wrap">
           <div style="flex: 1; min-width: 280px">
-            <div class="hint" style="margin-bottom: 6px">宇宙俯瞰ビュー（真上から見た実際の配置）</div>
+            <div class="hint" style="margin-bottom: 6px" id="cap1a">宇宙俯瞰ビュー（真上から見た実際の配置）</div>
             <canvas id="cv1a" width="440" height="360"></canvas>
           </div>
           <div style="flex: 1; min-width: 280px">
-            <div class="hint" style="margin-bottom: 6px">望遠鏡視野ビュー（地球から見た空）</div>
+            <div class="hint" style="margin-bottom: 6px" id="cap1b">望遠鏡視野ビュー（地球から見た空）</div>
             <canvas id="cv1b" width="440" height="360"></canvas>
           </div>
         </div>
@@ -614,8 +636,14 @@
             </div>
           </div>
 
+          <!-- ▼ 追加：ビュー切り替えトグル（STEP2） -->
+          <div class="view-toggle">
+            <label class="sw"><input type="checkbox" id="toggle-s2" />日常のたとえで見る（灯台の明滅）</label>
+            <span class="hint note">ON：ゆっくり点滅する灯台ほど「本来のワット数（明るさ）」が大きい</span>
+          </div>
+
           <canvas id="cv2" width="900" height="300"></canvas>
-          <div class="hint">↑ 光度曲線。変光の山と山の間隔＝周期を読み取ります。</div>
+          <div class="hint" id="cap2">↑ 光度曲線。変光の山と山の間隔＝周期を読み取ります。</div>
           <div class="controls">
             <label>観測対象セファイドの変光周期を調整（日）：<span id="Plab"></span></label>
             <input type="range" id="period2" min="1" max="100" value="10" />
@@ -655,8 +683,14 @@
             <div class="mame">豆知識：セファイドと同じ銀河で<a href="https://astro-dic.jp/supernova/" target="_blank">超新星</a>を観測して"ものさし"をさらに遠くまでのばします。 この方法で「宇宙は加速して広がっている」ことが発見され、2011年のノーベル物理学賞につながりました。</div>
           </div>
 
+          <!-- ▼ 追加：ビュー切り替えトグル（STEP3） -->
+          <div class="view-toggle">
+            <label class="sw"><input type="checkbox" id="toggle-s3" />日常のたとえで見る（限界で溢れるコップ）</label>
+            <span class="hint note">ON：一定量で必ず溢れるコップ → 溢れた瞬間に「同じ規格の花火」が弾ける</span>
+          </div>
+
           <canvas id="cv3" width="900" height="300"></canvas>
-          <div class="hint">↑ <a href="https://astro-dic.jp/white-dwarf/" target="_blank">白色矮星への降着</a> → <a href="https://astro-dic.jp/chandrasekhar-limit/" target="_blank">限界質量</a> → <a href="https://astro-dic.jp/supernova/" target="_blank">大爆発</a>のアニメーション。</div>
+          <div class="hint" id="cap3">↑ <a href="https://astro-dic.jp/white-dwarf/" target="_blank">白色矮星への降着</a> → <a href="https://astro-dic.jp/chandrasekhar-limit/" target="_blank">限界質量</a> → <a href="https://astro-dic.jp/supernova/" target="_blank">大爆発</a>のアニメーション。</div>
           <button class="btn ghost" id="playSN">▶ 爆発アニメーションを再生</button>
           <div class="controls">
             <label>観測されたピーク時の見かけの等級 m を測定：<span id="mSNlab"></span></label>
@@ -696,8 +730,14 @@
             <div class="mame">豆知識：1929年、ハッブルが「遠い銀河ほど速く遠ざかる」ことを発見しました（ハッブルの法則）。</div>
           </div>
 
+          <!-- ▼ 追加：ビュー切り替えトグル（STEP4） -->
+          <div class="view-toggle">
+            <label class="sw"><input type="checkbox" id="toggle-s4" />日常のたとえで見る（救急車のサイレン）</label>
+            <span class="hint note">ON：遠ざかる救急車ほど音波（波長）が伸びる＝赤方偏移が大きい</span>
+          </div>
+
           <canvas id="cvSpec" width="900" height="140"></canvas>
-          <div class="hint">↑ 上：静止波長の基準線／下：観測された銀河スペクトル。重ねてズレ z を測定。</div>
+          <div class="hint" id="capSpec">↑ 上：静止波長の基準線／下：観測された銀河スペクトル。重ねてズレ z を測定。</div>
           <div class="controls">
             <label>スペクトルの赤方偏移量 z を調整：<span id="zlab"></span></label>
             <input type="range" id="zval" min="0" max="0.2" step="0.001" value="0.02" />
@@ -736,6 +776,12 @@
       if (!Math.log10) Math.log10 = (x) => Math.log(x) / Math.LN10;
       const PC_TO_LY = 3.2616;
       const state = { step1Done: false, step2Done: false, step3Done: false, d1: null, d2: null, d3: null };
+
+      /* ---- 追加：トグル状態を安全に取得するヘルパー ---- */
+      function isDaily(id) {
+        const el = document.getElementById(id);
+        return !!(el && el.checked);
+      }
 
       /* ================= ナビ ================= */
       const steps = [
@@ -792,8 +838,8 @@
       document.getElementById("s1").classList.add("active");
 
       /* ============================================================
-   STEP 1 : 年周視差 ― 俯瞰ビューと望遠鏡視野ビューを分離
-   ============================================================ */
+         STEP 1 : 年周視差
+         ============================================================ */
       const cv1a = document.getElementById("cv1a"),
         xa = cv1a.getContext("2d");
       const cv1b = document.getElementById("cv1b"),
@@ -811,8 +857,34 @@
         const distNorm = parseInt(dist1.value);
         const phase = (phase1.value * Math.PI) / 180;
         const cosP = Math.cos(phase);
+        const daily = isDaily("toggle-s1");
 
-        /* 左：宇宙俯瞰ビュー */
+        /* キャプション切り替え */
+        document.getElementById("cap1a").textContent = daily ? "俯瞰ビュー（道路・走る車・近くの標識・遠くの山）" : "宇宙俯瞰ビュー（真上から見た実際の配置）";
+        document.getElementById("cap1b").textContent = daily ? "車窓ビュー（遠くの山に対して標識が左右に動く）" : "望遠鏡視野ビュー（地球から見た空）";
+
+        if (daily) drawStep1Daily(distNorm, phase, cosP);
+        else drawStep1Cosmic(distNorm, phase, cosP);
+
+        /* 記録・計算（両モード共通・既存ロジックを保持） */
+        if (cosP > 0.85) seenRight = true;
+        if (cosP < -0.85) seenLeft = true;
+        const parallaxArcsec = 1000 / distNorm;
+        const dpc = (1 / parallaxArcsec) * 1000,
+          dly = dpc * PC_TO_LY;
+        document.getElementById("d1lab").textContent = distNorm + " (校正値)";
+        document.getElementById("p1").textContent = parallaxArcsec.toFixed(3) + ' "';
+        document.getElementById("dout1").textContent = dly < 10000 ? Math.round(dly) + " 光年" : "測定範囲外";
+        const ok = seenLeft && seenRight;
+        document.getElementById("ok1").disabled = !ok;
+        const st = document.getElementById("st1");
+        if (ok) {
+          st.className = "status ok";
+          st.textContent = "軌道の両端で見かけの位置の振れ（視差）を観測できました。距離を確定できます。";
+        }
+      }
+
+      function drawStep1Cosmic(distNorm, phase, cosP) {
         const W = cv1a.width,
           H = cv1a.height;
         xa.clearRect(0, 0, W, H);
@@ -877,7 +949,6 @@
         xa.fillStyle = "#d4e3ff";
         xa.fillText("🌍", earth.x - 7, earth.y - 9);
 
-        /* 右：望遠鏡視野ビュー */
         const Wb = cv1b.width,
           Hb = cv1b.height;
         xb.clearRect(0, 0, Wb, Hb);
@@ -934,26 +1005,181 @@
         xb.beginPath();
         xb.arc(Wb / 2, Hb / 2, Math.min(Wb, Hb) / 2 - 8, 0, 7);
         xb.stroke();
+      }
 
-        /* 記録・計算 */
-        if (cosP > 0.85) seenRight = true;
-        if (cosP < -0.85) seenLeft = true;
-        const parallaxArcsec = 1000 / distNorm;
-        const dpc = (1 / parallaxArcsec) * 1000,
-          dly = dpc * PC_TO_LY;
-        document.getElementById("d1lab").textContent = distNorm + " (校正値)";
-        document.getElementById("p1").textContent = parallaxArcsec.toFixed(3) + ' "';
-        document.getElementById("dout1").textContent = dly < 10000 ? Math.round(dly) + " 光年" : "測定範囲外";
-        const ok = seenLeft && seenRight;
-        document.getElementById("ok1").disabled = !ok;
-        const st = document.getElementById("st1");
-        if (ok) {
-          st.className = "status ok";
-          st.textContent = "軌道の両端で見かけの位置の振れ（視差）を観測できました。距離を確定できます。";
+      /* ▼ 修正版：日常ビュー（車窓からの風景）
+         車を必ず道路（台形）の内側に収め、標識は距離に応じて遠近配置 */
+      function drawStep1Daily(distNorm, phase, cosP) {
+        const far = (distNorm - 1) / (1000 - 1); // 0(近)..1(遠)
+        const near = 1 - far;
+
+        /* ---- 左：俯瞰ビュー ---- */
+        const W = cv1a.width,
+          H = cv1a.height;
+        xa.clearRect(0, 0, W, H);
+        xa.fillStyle = "#0b0e13";
+        xa.fillRect(0, 0, W, H);
+
+        // 道路パラメータ（消失点＝奥、手前＝下）
+        const vanishX = W * 0.5,
+          vanishY = H * 0.4;
+        const roadY = H * 0.86; // 手前の道路端（最も下）
+        const roadHalfNear = W * 0.34; // 手前の道幅の半分
+        const roadHalfVanish = W * 0.02; // 消失点付近の道幅の半分
+
+        // 遠景の山並み（地平線＝消失点付近）
+        xa.fillStyle = "#1b4b7d";
+        xa.beginPath();
+        xa.moveTo(0, vanishY);
+        for (let i = 0; i <= W; i += 40) xa.lineTo(i, vanishY - Math.abs(Math.sin(i * 0.02)) * 24);
+        xa.lineTo(W, vanishY);
+        xa.lineTo(W, vanishY + 6);
+        xa.lineTo(0, vanishY + 6);
+        xa.closePath();
+        xa.fill();
+        xa.fillStyle = "#8d9199";
+        xa.font = "11px Roboto,sans-serif";
+        xa.fillText("遠くの山並み（＝遠方の背景星）", 12, vanishY - 12);
+
+        // 指定した奥行き比 p(0=奥,1=手前) から道路上のY座標・道幅半分を返すヘルパー
+        const roadYAt = (p) => vanishY + (roadY - vanishY) * p;
+        const roadHalfAt = (p) => roadHalfVanish + (roadHalfNear - roadHalfVanish) * p;
+
+        /* 車：手前寄りの路面上（奥行き比 pCar）に配置し、その位置の道幅内で左右移動 */
+        const pCar = 0.82; // 手前寄り（0..1）
+        const carY = roadYAt(pCar); // 路面上のY
+        const carHalf = roadHalfAt(pCar); // その地点の道幅の半分
+        const carW = Math.min(40, carHalf * 0.9); // 車幅（道幅に収める）
+        const carRange = carHalf - carW / 2 - 4; // はみ出さない移動レンジ
+        const carX = vanishX + cosP * carRange; // cosP で左右移動
+
+        /* 標識：距離が遠いほど奥（消失点寄り・小さく）、近いほど手前（大きく） */
+        const pSign = 0.15 + near * 0.55; // 奥行き比
+        const signX = vanishX;
+        const signY = roadYAt(pSign);
+        const signScale = 0.4 + pSign * 0.9;
+
+        // 視線：車 → 標識 → 山（奥へ延長）
+        xa.strokeStyle = "rgba(166,200,255,.85)";
+        xa.lineWidth = 1.4;
+        xa.beginPath();
+        xa.moveTo(carX, carY);
+        xa.lineTo(signX, signY);
+        const dxL = signX - carX,
+          dyL = signY - carY;
+        xa.lineTo(signX + dxL * 1.4, signY + dyL * 1.4);
+        xa.stroke();
+
+        // 標識ポール＋標識
+        const poleH = 34 * signScale,
+          headR = 10 * signScale;
+        xa.strokeStyle = "#8d9199";
+        xa.lineWidth = 3 * signScale;
+        xa.beginPath();
+        xa.moveTo(signX, signY);
+        xa.lineTo(signX, signY + poleH);
+        xa.stroke();
+        xa.fillStyle = "#8fd99a";
+        xa.beginPath();
+        xa.arc(signX, signY, headR, 0, 7);
+        xa.fill();
+        xa.fillStyle = "#ffd9e4";
+        xa.font = "11px Roboto,sans-serif";
+        xa.fillText("近くの標識（＝対象星）", signX - 44, signY - headR - 6);
+        xa.fillStyle = "#c3c6cf";
+        xa.fillText(far > 0.66 ? "遠い → ほとんど動かない" : far > 0.33 ? "中くらいの距離" : "近い → 大きく動く", signX - 50, signY + poleH + 16);
+
+        // 車（路面上・中央基準で左右移動）
+        xa.fillStyle = "#a6c8ff";
+        xa.fillRect(carX - carW / 2, carY - 12, carW, 16);
+        xa.fillStyle = "#cfe0ff";
+        xa.fillRect(carX - carW / 2 + 5, carY - 9, carW - 10, 6); // フロントガラス
+        xa.fillStyle = "#31353c";
+        xa.beginPath();
+        xa.arc(carX - carW / 2 + 6, carY + 5, 4, 0, 7);
+        xa.arc(carX + carW / 2 - 6, carY + 5, 4, 0, 7);
+        xa.fill();
+        // ヘッドライト（進行＝奥向きなので手前側を灯火色に）
+        xa.fillStyle = "#ffe082";
+        xa.fillRect(carX - carW / 2 + 2, carY - 12, 4, 3);
+        xa.fillRect(carX + carW / 2 - 6, carY - 12, 4, 3);
+        xa.fillStyle = "#d4e3ff";
+        xa.fillText("🚗 走る車（＝公転する地球）", carX - 50, carY + 24);
+
+        /* ---- 右：車窓ビュー ---- */
+        const Wb = cv1b.width,
+          Hb = cv1b.height;
+        xb.clearRect(0, 0, Wb, Hb);
+        xb.fillStyle = "#0b1a2e";
+        xb.fillRect(0, 0, Wb, Hb);
+        xb.fillStyle = "#1b4b7d";
+        xb.beginPath();
+        xb.moveTo(0, Hb * 0.5);
+        for (let i = 0; i <= Wb; i += 50) xb.lineTo(i, Hb * 0.5 - Math.abs(Math.sin(i * 0.015)) * 55);
+        xb.lineTo(Wb, Hb);
+        xb.lineTo(0, Hb);
+        xb.closePath();
+        xb.fill();
+        xb.fillStyle = "#8d9199";
+        xb.font = "11px Roboto,sans-serif";
+        xb.fillText("遠くの山並み（動かない基準）", 12, 20);
+        xb.strokeStyle = "rgba(255,255,255,.2)";
+        xb.setLineDash([3, 4]);
+        xb.beginPath();
+        xb.moveTo(Wb / 2, 20);
+        xb.lineTo(Wb / 2, Hb - 20);
+        xb.stroke();
+        xb.setLineDash([]);
+
+        const parallaxPix = cosP * (60 * (100 / distNorm));
+        const signBaseY = Hb * 0.42 + near * (Hb * 0.32);
+        const winScale = 0.4 + near * 1.0;
+        const appX = Wb / 2 + parallaxPix,
+          appXopp = Wb / 2 - parallaxPix;
+        const headRb = 9 * winScale,
+          poleHb = 26 * winScale;
+
+        xb.strokeStyle = "rgba(143,217,154,.35)";
+        xb.lineWidth = 3 * winScale;
+        xb.beginPath();
+        xb.moveTo(appXopp, signBaseY);
+        xb.lineTo(appXopp, signBaseY + poleHb);
+        xb.stroke();
+        xb.fillStyle = "rgba(143,217,154,.35)";
+        xb.beginPath();
+        xb.arc(appXopp, signBaseY - headRb * 0.5, headRb, 0, 7);
+        xb.fill();
+
+        xb.strokeStyle = "#8d9199";
+        xb.lineWidth = 3 * winScale;
+        xb.beginPath();
+        xb.moveTo(appX, signBaseY);
+        xb.lineTo(appX, signBaseY + poleHb);
+        xb.stroke();
+        xb.fillStyle = "#8fd99a";
+        xb.beginPath();
+        xb.arc(appX, signBaseY - headRb * 0.5, headRb, 0, 7);
+        xb.fill();
+        xb.fillStyle = "#e1e2e8";
+        xb.font = "11px Roboto,sans-serif";
+        xb.fillText(far > 0.66 ? "遠い標識：小さく・ほぼ動かない" : "近い標識：大きく・左右に動く", appX - 70, signBaseY + poleHb + 18);
+
+        if (Math.abs(parallaxPix) > 1) {
+          xb.strokeStyle = "#ffd54f";
+          xb.lineWidth = 1.5;
+          const arrowY = signBaseY + poleHb + 26;
+          xb.beginPath();
+          xb.moveTo(appXopp, arrowY);
+          xb.lineTo(appX, arrowY);
+          xb.stroke();
+          xb.fillStyle = "#ffd54f";
+          xb.fillText("見かけの動き（＝視差）", Math.min(appX, appXopp) + 2, arrowY - 4);
         }
       }
+
       dist1.oninput = drawStep1;
       phase1.oninput = drawStep1;
+      document.getElementById("toggle-s1").onchange = drawStep1;
       document.getElementById("ok1").onclick = () => {
         state.step1Done = true;
         state.d1 = Math.round((1 / (1000 / parseInt(dist1.value))) * 1000 * PC_TO_LY);
@@ -963,8 +1189,8 @@
       };
 
       /* ============================================================
-   STEP 2 : セファイド
-   ============================================================ */
+         STEP 2 : セファイド
+         ============================================================ */
       const cv2 = document.getElementById("cv2"),
         x2 = cv2.getContext("2d");
       const period2 = document.getElementById("period2");
@@ -974,21 +1200,26 @@
           H = cv2.height;
         x2.clearRect(0, 0, W, H);
         const P = parseInt(period2.value);
+        const daily = isDaily("toggle-s2");
+        document.getElementById("cap2").textContent = daily ? "↑ 左：光度曲線／右：灯台（ゆっくり点滅＝ワット数が大）。周期で本来の明るさが決まります。" : "↑ 光度曲線。変光の山と山の間隔＝周期を読み取ります。";
+
+        /* --- 光度曲線（常に描画。日常時は左半分に収める）--- */
+        const plotRight = daily ? W * 0.55 : W - 20;
         x2.strokeStyle = "#42474e";
         x2.beginPath();
         x2.moveTo(50, 20);
         x2.lineTo(50, H - 30);
-        x2.lineTo(W - 20, H - 30);
+        x2.lineTo(plotRight, H - 30);
         x2.stroke();
         x2.fillStyle = "#c3c6cf";
         x2.font = "11px Roboto,sans-serif";
         x2.fillText("明るさ", 6, H / 2);
-        x2.fillText("時間 →", W - 70, H - 12);
+        x2.fillText("時間 →", plotRight - 50, H - 12);
         x2.strokeStyle = "#ffd54f";
         x2.lineWidth = 2;
         x2.beginPath();
-        for (let px = 50; px < W - 20; px++) {
-          const t = ((px - 50) / (W - 70)) * 4,
+        for (let px = 50; px < plotRight; px++) {
+          const t = ((px - 50) / (plotRight - 70)) * 4,
             cyc = ((t * 100) / P + anim2) % 1;
           let b = cyc < 0.25 ? cyc / 0.25 : 1 - (cyc - 0.25) / 0.75;
           const amp = 25 + P * 0.4,
@@ -997,6 +1228,66 @@
           else x2.lineTo(px, y);
         }
         x2.stroke();
+
+        /* --- 日常ビュー：灯台（右半分） --- */
+        if (daily) {
+          const lx = W * 0.78,
+            baseY = H - 40;
+          // 点滅サイクル（周期が大きいほどゆっくり）
+          const blink = (Math.sin((anim2 * 2 * Math.PI * 100) / P) + 1) / 2; // 0..1
+          // ワット数の比喩：周期Pが大きいほど光の半径大
+          const maxR = 40 + (P / 100) * 150;
+          const beamR = maxR * (0.35 + 0.65 * blink);
+          // 光のグラデーション
+          const cxL = lx,
+            cyL = baseY - 90;
+          const grad = x2.createRadialGradient(cxL, cyL, 0, cxL, cyL, beamR);
+          grad.addColorStop(0, "rgba(255,238,150," + 0.85 * (0.4 + 0.6 * blink) + ")");
+          grad.addColorStop(0.5, "rgba(255,213,79," + 0.35 * (0.4 + 0.6 * blink) + ")");
+          grad.addColorStop(1, "rgba(255,213,79,0)");
+          x2.fillStyle = grad;
+          x2.beginPath();
+          x2.arc(cxL, cyL, beamR, 0, 7);
+          x2.fill();
+          // 灯台の塔
+          x2.fillStyle = "#e1e2e8";
+          x2.beginPath();
+          x2.moveTo(lx - 14, baseY);
+          x2.lineTo(lx - 9, baseY - 70);
+          x2.lineTo(lx + 9, baseY - 70);
+          x2.lineTo(lx + 14, baseY);
+          x2.closePath();
+          x2.fill();
+          // 赤帯
+          x2.fillStyle = "#ff8a80";
+          x2.fillRect(lx - 12, baseY - 24, 24, 10);
+          x2.fillRect(lx - 10, baseY - 48, 20, 8);
+          // ランプ室
+          x2.fillStyle = "#ffee96";
+          x2.beginPath();
+          x2.arc(cxL, cyL, 9, 0, 7);
+          x2.fill();
+          x2.strokeStyle = "#8d9199";
+          x2.lineWidth = 1.5;
+          x2.beginPath();
+          x2.moveTo(lx - 10, baseY - 70);
+          x2.lineTo(lx + 10, baseY - 70);
+          x2.lineTo(lx + 6, baseY - 82);
+          x2.lineTo(lx - 6, baseY - 82);
+          x2.closePath();
+          x2.stroke();
+          // 地面
+          x2.strokeStyle = "#42474e";
+          x2.beginPath();
+          x2.moveTo(lx - 60, baseY);
+          x2.lineTo(lx + 60, baseY);
+          x2.stroke();
+          // ラベル
+          x2.fillStyle = "#c3c6cf";
+          x2.fillText("周期 " + P + " 日 → 明るさ（ワット数）大", lx - 78, baseY + 20);
+          x2.fillText(P >= 50 ? "ゆっくり点滅＝とても明るい" : P >= 20 ? "そこそこの明るさ" : "速い点滅＝暗め", lx - 70, baseY + 36);
+        }
+
         const M = -2.43 * (Math.log10(P) - 1) - 4.05,
           m = 14.5;
         const dpc = Math.pow(10, (m - M + 5) / 5),
@@ -1016,6 +1307,7 @@
       }
       loop2();
       period2.oninput = drawStep2;
+      document.getElementById("toggle-s2").onchange = drawStep2;
       document.getElementById("ok2").onclick = () => {
         state.step2Done = true;
         state.d2 = state._d2tmp;
@@ -1027,14 +1319,30 @@
       };
 
       /* ============================================================
-   STEP 3 : Ia型超新星
-   ============================================================ */
+         STEP 3 : Ia型超新星
+         ============================================================ */
       const cv3 = document.getElementById("cv3"),
         x3 = cv3.getContext("2d");
       const mSN = document.getElementById("mSN");
       let snPhase = 0,
         snPlaying = false;
       function drawStep3() {
+        const daily = isDaily("toggle-s3");
+        document.getElementById("cap3").innerHTML = daily ? "↑ 計量カップに水滴が落ちて水位が上がり、限界線を越えた瞬間に「同じ規格の花火」が弾けます。" : '↑ <a href="https://astro-dic.jp/white-dwarf/" target="_blank">白色矮星への降着</a> → <a href="https://astro-dic.jp/chandrasekhar-limit/" target="_blank">限界質量</a> → <a href="https://astro-dic.jp/supernova/" target="_blank">大爆発</a>のアニメーション。';
+        if (daily) drawStep3Daily();
+        else drawStep3Cosmic();
+
+        const m = parseFloat(mSN.value),
+          M = -19.3;
+        const dpc = Math.pow(10, (m - M + 5) / 5),
+          dly = dpc * PC_TO_LY;
+        document.getElementById("mSNlab").textContent = m.toFixed(1);
+        document.getElementById("mSNval").textContent = m.toFixed(1);
+        document.getElementById("dout3").textContent = (dly / 1e9).toFixed(2) + " 十億光年";
+        state._d3tmp = Math.round(dly);
+      }
+
+      function drawStep3Cosmic() {
         const W = cv3.width,
           H = cv3.height;
         x3.clearRect(0, 0, W, H);
@@ -1088,16 +1396,103 @@
           x3.fillStyle = "#ffd54f";
           x3.fillText("Ia型超新星爆発！ 標準光源 M≒-19.3", cx - 90, cy + 80);
         }
-        const m = parseFloat(mSN.value),
-          M = -19.3;
-        const dpc = Math.pow(10, (m - M + 5) / 5),
-          dly = dpc * PC_TO_LY;
-        document.getElementById("mSNlab").textContent = m.toFixed(1);
-        document.getElementById("mSNval").textContent = m.toFixed(1);
-        document.getElementById("dout3").textContent = (dly / 1e9).toFixed(2) + " 十億光年";
-        state._d3tmp = Math.round(dly);
       }
+
+      /* ▼ 追加：日常ビュー（限界で溢れるコップ＋規格化された花火） */
+      function drawStep3Daily() {
+        const W = cv3.width,
+          H = cv3.height;
+        x3.clearRect(0, 0, W, H);
+        const cupCx = W * 0.32,
+          cupTop = H * 0.22,
+          cupBottom = H * 0.82;
+        const cupTopW = 130,
+          cupBotW = 90;
+        const growth = Math.min(snPhase / 0.6, 1); // 水位（0..1）
+        // 蛇口／水滴
+        if (snPhase < 0.6) {
+          const fx = cupCx + Math.cos(snPhase * 40) * 4;
+          for (let i = 0; i < 4; i++) {
+            const t = (snPhase * 4 + i * 0.25) % 1;
+            const dy = cupTop - 40 + t * 60;
+            x3.fillStyle = "rgba(120,200,255," + (1 - t * 0.5) + ")";
+            x3.beginPath();
+            x3.arc(fx, dy, 3, 0, 7);
+            x3.fill();
+          }
+          x3.fillStyle = "#8d9199";
+          x3.fillRect(cupCx - 16, cupTop - 52, 32, 10);
+        }
+        // コップ本体（台形）
+        x3.strokeStyle = "#c3c6cf";
+        x3.lineWidth = 3;
+        x3.beginPath();
+        x3.moveTo(cupCx - cupTopW / 2, cupTop);
+        x3.lineTo(cupCx - cupBotW / 2, cupBottom);
+        x3.lineTo(cupCx + cupBotW / 2, cupBottom);
+        x3.lineTo(cupCx + cupTopW / 2, cupTop);
+        x3.stroke();
+        // 限界線（必ず溢れる位置）
+        const limitY = cupTop + (cupBottom - cupTop) * 0.12;
+        x3.strokeStyle = "#ffb4ab";
+        x3.lineWidth = 2;
+        x3.setLineDash([6, 5]);
+        x3.beginPath();
+        x3.moveTo(cupCx - cupTopW / 2 - 12, limitY);
+        x3.lineTo(cupCx + cupTopW / 2 + 12, limitY);
+        x3.stroke();
+        x3.setLineDash([]);
+        x3.fillStyle = "#ffb4ab";
+        x3.font = "11px Roboto,sans-serif";
+        x3.fillText("限界線（＝チャンドラセカール限界 1.4M☉）", cupCx - 100, limitY - 8);
+        // 水位
+        if (snPhase < 0.6) {
+          const waterTop = cupBottom - (cupBottom - limitY) * growth;
+          const wTopW = cupBotW + (cupTopW - cupBotW) * ((cupBottom - waterTop) / (cupBottom - cupTop));
+          x3.fillStyle = "rgba(90,170,255,.7)";
+          x3.beginPath();
+          x3.moveTo(cupCx - wTopW / 2, waterTop);
+          x3.lineTo(cupCx - cupBotW / 2, cupBottom);
+          x3.lineTo(cupCx + cupBotW / 2, cupBottom);
+          x3.lineTo(cupCx + wTopW / 2, waterTop);
+          x3.closePath();
+          x3.fill();
+          x3.fillStyle = "#c3c6cf";
+          x3.fillText("水位 " + (1.0 + 0.4 * growth).toFixed(2) + " M☉ 相当", cupCx - 60, cupBottom + 24);
+        } else {
+          // 溢れた瞬間＝規格化された花火（100W）
+          const e = (snPhase - 0.6) / 0.4;
+          const fxc = W * 0.62,
+            fyc = H * 0.42;
+          const R = 30 + e * 150;
+          const rays = 16;
+          for (let i = 0; i < rays; i++) {
+            const ang = (i / rays) * Math.PI * 2;
+            x3.strokeStyle = "rgba(255," + Math.round(200 - e * 120) + "," + Math.round(120 + e * 60) + "," + (1 - e) + ")";
+            x3.lineWidth = 2;
+            x3.beginPath();
+            x3.moveTo(fxc + Math.cos(ang) * R * 0.4, fyc + Math.sin(ang) * R * 0.4);
+            x3.lineTo(fxc + Math.cos(ang) * R, fyc + Math.sin(ang) * R);
+            x3.stroke();
+            x3.fillStyle = "rgba(255,240,180," + (1 - e) + ")";
+            x3.beginPath();
+            x3.arc(fxc + Math.cos(ang) * R, fyc + Math.sin(ang) * R, 3 * (1 - e * 0.5), 0, 7);
+            x3.fill();
+          }
+          const grad = x3.createRadialGradient(fxc, fyc, 0, fxc, fyc, R * 0.5);
+          grad.addColorStop(0, "rgba(255,255,255," + (1 - e) + ")");
+          grad.addColorStop(1, "rgba(255,220,120,0)");
+          x3.fillStyle = grad;
+          x3.beginPath();
+          x3.arc(fxc, fyc, R * 0.5, 0, 7);
+          x3.fill();
+          x3.fillStyle = "#ffd54f";
+          x3.fillText("溢れた瞬間に炸裂！ 花火はいつも同じ火薬量＝標準光源 M≒-19.3", fxc - 150, fyc + R + 24);
+        }
+      }
+
       mSN.oninput = drawStep3;
+      document.getElementById("toggle-s3").onchange = drawStep3;
       document.getElementById("playSN").onclick = () => {
         snPhase = 0;
         snPlaying = true;
@@ -1127,13 +1522,25 @@
       };
 
       /* ============================================================
-   STEP 4 : 赤方偏移 + ハッブル図
-   ============================================================ */
+         STEP 4 : 赤方偏移 + ハッブル図
+         ============================================================ */
       const cvSpec = document.getElementById("cvSpec"),
         xs = cvSpec.getContext("2d");
       const zval = document.getElementById("zval");
       const C = 299792;
       function drawSpectrum() {
+        const daily = isDaily("toggle-s4");
+        document.getElementById("capSpec").textContent = daily ? "↑ 遠ざかる救急車。zが大きいほど右へ進み、後方の音波（波長）の間隔が広がります。" : "↑ 上：静止波長の基準線／下：観測された銀河スペクトル。重ねてズレ z を測定。";
+        if (daily) drawSpectrumDaily();
+        else drawSpectrumCosmic();
+        const z = parseFloat(zval.value);
+        const v = Math.round(C * z);
+        document.getElementById("zlab").textContent = z.toFixed(3);
+        document.getElementById("zout").textContent = z.toFixed(3);
+        document.getElementById("vout").textContent = v.toLocaleString() + " km/s";
+      }
+
+      function drawSpectrumCosmic() {
         const W = cvSpec.width,
           H = cvSpec.height;
         xs.clearRect(0, 0, W, H);
@@ -1169,12 +1576,68 @@
         xs.stroke();
         xs.fillStyle = "#f7b0c8";
         xs.fillText("→ 赤方偏移 z=" + z.toFixed(3), x0, 52);
-        const v = Math.round(C * z);
-        document.getElementById("zlab").textContent = z.toFixed(3);
-        document.getElementById("zout").textContent = z.toFixed(3);
-        document.getElementById("vout").textContent = v.toLocaleString() + " km/s";
       }
+
+      /* ▼ 追加：日常ビュー（救急車のサイレン） */
+      function drawSpectrumDaily() {
+        const W = cvSpec.width,
+          H = cvSpec.height;
+        xs.clearRect(0, 0, W, H);
+        xs.fillStyle = "#0b0e13";
+        xs.fillRect(0, 0, W, H);
+        const z = parseFloat(zval.value);
+        // 道路
+        xs.strokeStyle = "#42474e";
+        xs.lineWidth = 2;
+        xs.beginPath();
+        xs.moveTo(10, H - 24);
+        xs.lineTo(W - 10, H - 24);
+        xs.stroke();
+        // 観測者（左）
+        xs.fillStyle = "#a6c8ff";
+        xs.font = "18px serif";
+        xs.fillText("🧑", 16, H - 30);
+        xs.fillStyle = "#8d9199";
+        xs.font = "10px Roboto,sans-serif";
+        xs.fillText("観測者", 14, H - 6);
+        // 救急車の位置：zに比例して右へ
+        const carX = 70 + (z / 0.2) * (W - 200);
+        const carY = H - 40;
+        // 後方に広がる音波（波長間隔 = zが大きいほど広い）
+        const waveGap = 14 + (z / 0.2) * 40;
+        for (let r = 0, k = 0; r < 300; r += waveGap, k++) {
+          xs.strokeStyle = "rgba(255," + Math.round(120 - (z / 0.2) * 80) + "," + Math.round(120 - (z / 0.2) * 80) + "," + Math.max(0.15, 0.7 - k * 0.12) + ")";
+          xs.lineWidth = 1.5;
+          xs.beginPath();
+          xs.arc(carX - 18, carY - 6, r, Math.PI * 0.6, Math.PI * 1.4);
+          xs.stroke();
+        }
+        // 救急車ボディ
+        xs.fillStyle = "#e1e2e8";
+        xs.fillRect(carX - 20, carY - 20, 40, 20);
+        xs.fillStyle = "#ffb4ab";
+        xs.fillRect(carX - 20, carY - 20, 40, 6);
+        xs.fillStyle = "#a6c8ff";
+        xs.fillRect(carX + 4, carY - 16, 12, 10);
+        xs.fillStyle = "#31353c";
+        xs.beginPath();
+        xs.arc(carX - 10, carY, 5, 0, 7);
+        xs.arc(carX + 10, carY, 5, 0, 7);
+        xs.fill();
+        // 赤色灯
+        xs.fillStyle = "#ff5252";
+        xs.beginPath();
+        xs.arc(carX, carY - 24, 3, 0, 7);
+        xs.fill();
+        // ラベル
+        xs.fillStyle = "#f7b0c8";
+        xs.font = "11px Roboto,sans-serif";
+        xs.fillText("🚑 遠ざかる救急車　z=" + z.toFixed(3) + "（音＝光の波長が伸びる）", 70, 16);
+      }
+
       zval.oninput = drawSpectrum;
+      document.getElementById("toggle-s4").onchange = drawSpectrum;
+
       const cvH = document.getElementById("cvHubble"),
         xh = cvH.getContext("2d");
       let hubblePts = [];
@@ -1235,6 +1698,15 @@
         hubblePts.push({ d: Math.min(d, 900), v: v });
         drawHubble();
       };
+
+      /* STEP4 の救急車アニメを滑らかにするためのループ */
+      function loop4() {
+        if (document.getElementById("s4").classList.contains("active") && isDaily("toggle-s4")) {
+          drawSpectrum();
+        }
+        requestAnimationFrame(loop4);
+      }
+      loop4();
 
       /* 初期描画 */
       drawStep1();
